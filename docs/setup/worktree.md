@@ -1,0 +1,2 @@
+C:/Users/annac/carmoney-lab/carmoney-lab-autkina-sa/.kilo/worktrees/colossal-hair d4c5f38 [colossal-hair]
+C:/Users/annac/carmoney-lab/carmoney-lab-autkina-sa/.kilo/worktrees/verbena-plant d4c5f38 (detached HEAD)
