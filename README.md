@@ -31,6 +31,20 @@ Docker'а на ноутбуке нет? Тогда локально работа
 | `make seed` | перезалить учебные данные |
 | `make help` | список всех команд |
 
+## Как проверить, что сервис жив
+
+После `make up` — три быстрых проверки:
+
+1. **Контейнеры поднялись.** `make ps` покажет `backend` в статусе `running`/`healthy`
+   и `db` в `healthy` (compose ждёт `mysqladmin ping` — `docker-compose.yml:38-42`).
+2. **HTTP отвечает.** `curl -i http://localhost:8080/health` — ожидаем `200 OK`.
+   Если отвечает форма — `curl -I http://localhost:8080/` (200/304).
+3. **Бэкенд и база вместе.** `make test` — весь PHPUnit зелёный: тесты `tests/Feature`
+   ходят через `AppFactory` в БД, так что падение = проблема связки.
+
+Если что-то не так — `make logs` (хвост логов backend) и `docker compose logs db`
+для базы. Остановить — `make down` (том `db-data` сохраняется, данные не теряются).
+
 ## API
 
 | Метод | Путь | Зачем |
